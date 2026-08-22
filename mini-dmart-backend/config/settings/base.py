@@ -95,7 +95,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if os.getenv('DB_ENGINE'):
+import dj_database_url
+
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+    if os.getenv('DB_SSLMODE'):
+        DATABASES['default']['OPTIONS'] = {'sslmode': os.getenv('DB_SSLMODE')}
+elif os.getenv('DB_ENGINE'):
     DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_ENGINE'),
