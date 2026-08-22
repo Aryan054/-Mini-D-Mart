@@ -30,7 +30,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 raw_hosts = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
 ALLOWED_HOSTS = []
 for host in raw_hosts:
-    host = host.strip()
+    host = host.strip().strip('"').strip("'")
     if host.startswith('http://'):
         host = host[7:]
     if host.startswith('https://'):
