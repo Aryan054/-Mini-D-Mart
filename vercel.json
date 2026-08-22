@@ -13,22 +13,30 @@
       "use": "@vercel/python"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/mini-dmart-backend/vercel_wsgi.py"
+      "src": "/api/(.*)",
+      "dest": "/mini-dmart-backend/vercel_wsgi.py"
     },
     {
-      "source": "/assets/(.*)",
-      "destination": "/mini-dmart-frontend/assets/$1"
+      "src": "/admin/(.*)",
+      "dest": "/mini-dmart-backend/vercel_wsgi.py"
     },
     {
-      "source": "/(.*\\.(svg|ico|png|jpg|jpeg))$",
-      "destination": "/mini-dmart-frontend/$1"
+      "src": "/static/(.*)",
+      "dest": "/mini-dmart-backend/vercel_wsgi.py"
     },
     {
-      "source": "/(.*)",
-      "destination": "/mini-dmart-frontend/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/mini-dmart-frontend/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(svg|ico|png|jpg|jpeg|js|css|json|woff2?|ttf|eot))$",
+      "dest": "/mini-dmart-frontend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/mini-dmart-frontend/index.html"
     }
   ],
   "env": {
