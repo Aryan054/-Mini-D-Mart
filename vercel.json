@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "mini-dmart-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "mini-dmart-backend/vercel_wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/mini-dmart-backend/vercel_wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/mini-dmart-frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "config.settings.development"
+  }
+}
