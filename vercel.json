@@ -19,8 +19,12 @@
       "dest": "/mini-dmart-backend/vercel_wsgi.py"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.(js|css|svg|png|jpg|jpeg|ico|json|woff2?|ttf|eot))$",
       "dest": "/mini-dmart-frontend/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/mini-dmart-frontend/dist/index.html"
     }
   ],
   "env": {
