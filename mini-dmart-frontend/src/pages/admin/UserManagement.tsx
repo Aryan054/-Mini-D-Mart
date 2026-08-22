@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../api/axios';
-import { Users, Shield, UserCheck, ShieldAlert } from 'lucide-react';
+import { Shield, UserCheck, ShieldAlert } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const UserManagement: React.FC = () => {

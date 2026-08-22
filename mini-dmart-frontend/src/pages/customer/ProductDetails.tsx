@@ -9,7 +9,7 @@ const ProductDetails: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [product, setProduct] = useState<any>(null);
-  const [inventory, setInventory] = useState<any>(null);
+
   const [isLoading, setIsLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);

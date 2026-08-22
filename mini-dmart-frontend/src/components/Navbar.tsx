@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { axiosInstance } from '../api/axios';
-import { ShoppingCart, User as UserIcon, LogOut, Package, LayoutDashboard } from 'lucide-react';
+import { ShoppingCart, User as UserIcon, LogOut, LayoutDashboard } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();

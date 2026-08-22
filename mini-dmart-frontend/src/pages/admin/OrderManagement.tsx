@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../api/axios';
-import { Package, Truck, Store, ChevronRight } from 'lucide-react';
+import { Truck, Store, ChevronRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const OrderManagement: React.FC = () => {

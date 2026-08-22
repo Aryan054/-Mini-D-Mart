@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
+
 import { axiosInstance } from '../../api/axios';
 import { User, Mail, Phone, Calendar, Shield } from 'lucide-react';
 
 const Profile: React.FC = () => {
-  const { user } = useAuth();
+
   const [profileData, setProfileData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
