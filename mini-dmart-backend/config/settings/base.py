@@ -106,6 +106,8 @@ if os.getenv('DB_ENGINE'):
             'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
+    if os.getenv('DB_SSLMODE'):
+        DATABASES['default']['OPTIONS'] = {'sslmode': os.getenv('DB_SSLMODE')}
 else:
     DATABASES = {
         'default': {

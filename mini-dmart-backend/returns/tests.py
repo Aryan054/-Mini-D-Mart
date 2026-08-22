@@ -17,7 +17,9 @@ def returns_setup_data():
     
     category = Category.objects.create(name='Test Category')
     product = Product.objects.create(name='Test', sku='T-01', category=category, price=Decimal('50.00'))
-    Inventory.objects.create(product=product, available_quantity=10)
+    inventory = Inventory.objects.get(product=product)
+    inventory.available_quantity = 10
+    inventory.save()
     
     order = Order.objects.create(
         user=customer,

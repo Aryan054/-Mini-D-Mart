@@ -34,10 +34,9 @@ def orders_setup_data(customer_user):
         category=category,
         price=Decimal('100.00')
     )
-    Inventory.objects.create(
-        product=product,
-        available_quantity=50
-    )
+    inventory = Inventory.objects.get(product=product)
+    inventory.available_quantity = 50
+    inventory.save()
     import datetime
     store = Store.objects.create(
         name='Test Store',
