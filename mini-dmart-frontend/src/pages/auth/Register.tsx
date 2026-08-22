@@ -34,12 +34,19 @@ const Register: React.FC = () => {
       }
     } catch (err: any) {
       if (err.response?.data) {
-        // Simple error handling for DRF validation errors
         const errData = err.response.data;
-        const messages = Object.values(errData).flat().join(', ');
-        setError(messages || 'Registration failed.');
+        if (typeof errData === 'string' && errData.trim().startsWith('<')) {
+          setError(`Server error: Received HTML response (Status ${err.response.status})`);
+        } else if (typeof errData === 'object') {
+          const messages = Object.values(errData).flat().join(', ');
+          setError(messages || 'Registration failed.');
+        } else {
+          setError('Registration failed with an unknown error.');
+        }
+      } else if (err.request) {
+        setError('Network error: Could not reach the server.');
       } else {
-        setError('An unexpected error occurred.');
+        setError(err.message || 'An unexpected error occurred.');
       }
     } finally {
       setIsLoading(false);

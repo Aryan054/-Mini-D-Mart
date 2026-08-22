@@ -42,6 +42,9 @@ for host in raw_hosts:
 if not ALLOWED_HOSTS:
     ALLOWED_HOSTS = ['*']
 
+# Vercel Serverless Functions proxy requests and set X-Forwarded-Host
+USE_X_FORWARDED_HOST = True
+
 
 # Application definition
 
