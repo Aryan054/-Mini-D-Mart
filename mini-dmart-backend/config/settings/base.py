@@ -42,8 +42,13 @@ for host in raw_hosts:
 if not ALLOWED_HOSTS:
     ALLOWED_HOSTS = ['*']
 
-# Vercel Serverless Functions proxy requests and set X-Forwarded-Host
-USE_X_FORWARDED_HOST = True
+# Allow all Vercel subdomains (required for Vercel serverless functions)
+if '.vercel.app' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('.vercel.app')
+if '127.0.0.1' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('127.0.0.1')
+if 'localhost' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('localhost')
 
 
 # Application definition
